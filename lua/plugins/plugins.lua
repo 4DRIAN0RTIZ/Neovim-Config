@@ -9,6 +9,10 @@
 -- * override the configuration of LazyVim plugins
 return {
   -- add srcery theme
+  -- add Nvim-R
+  {
+    "jalvesaq/Nvim-R",
+  },
   -- add ChatGPT
   {
   "jackMort/ChatGPT.nvim",
@@ -23,15 +27,29 @@ return {
     }
   },
 
-  -- add gruvbox-material
-  {"dracula/vim"},
+  -- add dracula
+  {"dracula/vim",
+  name = "dracula",
+  init = function()
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      pattern = "dracula",
+      callback = function()
+        local hl_definitions = { bg = "NONE", ctermbg = "NONE" }
+
+        vim.api.nvim_set_hl(0, "Normal", hl_definitions)
+        vim.api.nvim_set_hl(0, "NormalNC", hl_definitions)
+        vim.api.nvim_set_hl(0, "NormalFloat", hl_definitions)
+      end,
+    })
+  end,
+  },
 
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "dracula",
-    },
+  },
   },
 
   -- change trouble config
