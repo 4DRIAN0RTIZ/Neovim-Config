@@ -10,7 +10,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.opt_local.spell = false
     vim.g.markdown_recommended_style = 0
     -- Set default theme
-    vim.cmd("colorscheme morning")
     vim.cmd("setlocal spell spelllang=es")
   end,
 })
