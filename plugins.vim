@@ -1,6 +1,11 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
 "Plug 'weirongxu/plantuml-previewer.vim'
 "Plug 'tyru/open-browser.vim'
+Plug 'jackMort/ChatGPT.nvim'
+" Dependencias de ChatGPT.vim
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+"
 Plug 'github/copilot.vim'
 Plug 'leafOfTree/vim-matchtag'
 "Temas

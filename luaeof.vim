@@ -11,4 +11,5 @@ require("nvim-lsp-installer").setup({
     }
 })
 require'telescope'.load_extension('live_grep_args')
+require("chatgpt").setup()
 EOF
