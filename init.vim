@@ -94,6 +94,8 @@ let NERDTreeShowHidden=1
 
 "Airline Conf
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_x = '%{MyClock()}'
+
 
 "Theme Conf
 "set t_Co=256
@@ -110,11 +112,11 @@ augroup user_colors
   autocmd Colorscheme * highlight StatusLine guibg=none
 augroup END
 
-colorscheme gruvbox
+colorscheme dracula
 let g:gruvbox_material_background = 'hard'
 set termguicolors
 
-### Todo lo de arriba me funcionó con Kitty Terminal
+" Todo lo de arriba me funcionó con Kitty Terminal
 
 
 "Closetag Conf
@@ -162,3 +164,17 @@ let g:closetag_regions = {
 let g:closetag_close_shortcut = '<leader>>'
 
 so ~/.config/nvim/cocconfig.vim
+
+" Functions
+"
+
+function! MyUsername()
+  return $USER
+endfunction
+
+function! MyClock()
+  " Formatea la fecha y hora
+  let l:date_time = strftime("%a %d %b %Y %H:%M") 
+  " Retorna el nombre de usuario seguido de la fecha y hora formateada
+  return MyUsername() . ' hoy es ' . l:date_time
+endfunction

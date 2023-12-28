@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
 "Plug 'weirongxu/plantuml-previewer.vim'
 "Plug 'tyru/open-browser.vim'
+Plug 'github/copilot.vim'
 Plug 'leafOfTree/vim-matchtag'
 "Temas
 Plug 'sainnhe/gruvbox-material'
@@ -10,8 +11,6 @@ Plug 'dracula/vim'
 ""LSP
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
-"Live preview Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'}
 "Php
 Plug 'StanAngeloff/php.vim'
 "Color Picke
