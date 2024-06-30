@@ -1,3 +1,13 @@
+" Define highlight groups for active and inactive windows
+highlight InactiveWindow guibg=#3c3c3c
+" Set window highlight options, 
+autocmd WinEnter * setlocal winhighlight=Normal:None
+autocmd WinLeave * setlocal winhighlight=Normal:InactiveWindow
+
+set runtimepath+=~/.config/nvim/lua
+lua require('flask_curl')
+nnoremap <leader>fc :lua require('flask_curl').detect_flask_route()<CR>
+" ~/.config/nvim/init.vim
 "let &t_ut=""
 " Basic Configuration
 " Esto modifica el color de la barra de signos
@@ -9,7 +19,6 @@ autocmd FileType markdown let g:indentLine_enabled=0
 "autocmd FileType sh let g:airline_theme='badwolf'
 " Change font family sh files
 "autocmd FileType sh set guifont=FuraCode\ Nerd\ Font:h14
-
 set signcolumn=no
 set shell=sh
 let mapleader=" "
@@ -27,8 +36,8 @@ set noshowmode
 " Plugins file linked
 so ~/.config/nvim/plugins.vim
 
-" Lua EOF file linked
-so ~/.config/nvim/luaeof.vim
+" Lua Settings file linked
+so ~/.config/nvim/lua/settings.vim
 
 " Personal Keymaps file linked
 so ~/.config/nvim/keymaps.vim
@@ -67,35 +76,40 @@ let g:blade_custom_directives_pairs = {
 
 
 "NerdTree Conf
-let NERDTreeMinimalUI=1
+"let NERDTreeMinimalUI=1
 
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
-let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=1
-nnoremap <silent> <F2> :NERDTreeToggle<CR>
-"GitStatus Conf Dependency of NerdTree
-let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " a heavy feature too. default: normal
-let NERDTreeQuitOnOpen=1
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-let NERDTreeShowHidden=1
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+"let g:NERDTreeWinPos = "right"
+"let NERDTreeShowHidden=1
+"nnoremap <silent> <F2> :NvimTreeToggle<CR>
+""GitStatus Conf Dependency of NerdTree
+"let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " a heavy feature too. default: normal
+"let NERDTreeQuitOnOpen=1
+"let g:NERDTreeGitStatusIndicatorMapCustom = {
+"                \ 'Modified'  :'✹',
+"                \ 'Staged'    :'✚',
+"                \ 'Untracked' :'✭',
+"                \ 'Renamed'   :'➜',
+"                \ 'Unmerged'  :'═',
+"                \ 'Deleted'   :'✖',
+"                \ 'Dirty'     :'✗',
+"                \ 'Ignored'   :'☒',
+"                \ 'Clean'     :'✔︎',
+"                \ 'Unknown'   :'?',
+"                \ }
+"let NERDTreeShowHidden=1
 
 "Airline Conf
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_x = '%{MyClock()}'
 
+
+"NvimTree Conf
+
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
 
 "Theme Conf
 "set t_Co=256
@@ -112,7 +126,7 @@ augroup user_colors
   autocmd Colorscheme * highlight StatusLine guibg=none
 augroup END
 
-colorscheme dracula
+colorscheme catppuccin
 let g:gruvbox_material_background = 'hard'
 set termguicolors
 
@@ -178,3 +192,5 @@ function! MyClock()
   " Retorna el nombre de usuario seguido de la fecha y hora formateada
   return MyUsername() . ' hoy es ' . l:date_time
 endfunction
+
+

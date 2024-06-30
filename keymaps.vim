@@ -7,6 +7,12 @@ nmap <C-o> :bprevious<CR>
 "Telescope live grep
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
+nnoremap <leader>fc <cmd>lua require('flask_curl').detect_flask_route()<cr>
+
+"Toggle NvimTree
+nnoremap <silent> <F2> :NvimTreeToggle<CR>
+nnoremap <silent> <C-r> :NvimTreeRefresh<CR>
+nnoremap <silent> <F3> :NvimTreeFindFile<CR>
 
 "Copilot.vim next and previous
 imap <C-k> <Plug>(copilot-next)
@@ -27,3 +33,24 @@ let g:user_emmet_settings={
     \ 'extends' : 'jsx'
     \ }
   \ }
+
+"Window split and navigation Conf"
+"Split window vertically
+nnoremap <C-v> :vsplit<CR>
+"Split window horizontally
+nnoremap <C-s> :split<CR>
+"Move to the left Window
+nnoremap <C-l> <C-w>l
+"Move to the right Window
+nnoremap <C-h> <C-w>h
+"Move to the upper Window
+nnoremap <C-j> <C-w>j
+"Move to the lower Window
+nnoremap <C-k> <C-w>k
+"Resize Window
+nnoremap <C-Right> :vertical resize +5<CR>
+nnoremap <C-Left> :vertical resize -5<CR>
+nnoremap <C-Up> :resize +5<CR>
+nnoremap <C-Down> :resize -5<CR>
+"Close Window
+nnoremap <C-q> :close<CR>
